@@ -2,6 +2,7 @@ import telebot
 import random
 import datetime
 import requests
+import os
 
 from telebot import types
 from bs4 import BeautifulSoup
@@ -9,7 +10,7 @@ from bs4 import BeautifulSoup
 from keep_alive import keep_alive
 keep_alive()
 
-bot_token = token
+bot_token = token=os.environ.get('token')
 weather_api = 'c504a5e558cf4816ec8efa2fc962a225'
 EUR_UAH = 'https://minfin.com.ua/currency/eur/'
 EUR_UAH_BANK = 'https://minfin.com.ua/currency/banks/eur/'
