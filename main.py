@@ -6,6 +6,9 @@ import requests
 from telebot import types
 from bs4 import BeautifulSoup
 
+from keep_alive import keep_alive
+keep_alive()
+
 bot_token = token
 weather_api = 'c504a5e558cf4816ec8efa2fc962a225'
 EUR_UAH = 'https://minfin.com.ua/currency/eur/'
