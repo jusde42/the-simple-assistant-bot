@@ -1,3 +1,6 @@
+from flask import Flask,render_template
+from threading import Thread
+
 import telebot
 import random
 import datetime
@@ -6,9 +9,6 @@ import os
 
 from telebot import types
 from bs4 import BeautifulSoup
-
-from keep_alive import keep_alive
-keep_alive()
 
 bot_token = token=os.environ.get('token')
 weather_api = 'c504a5e558cf4816ec8efa2fc962a225'
@@ -23,6 +23,19 @@ user_agent = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'
 
 bot = telebot.TeleBot(bot_token)
 
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+  return "Alive"
+
+def run():
+  app.run(host='0.0.0.0',port=8080)
+
+def keep_alive():
+  t=Thread(target=run)
+  t.start
+  
 
 @bot.message_handler(commands=['start'])
 def start(message):
